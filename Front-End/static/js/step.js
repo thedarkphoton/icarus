@@ -55,16 +55,22 @@ var bootstrapWizardCreate = function(element, options) {
 
 		// Did we click the last button
 		$index = obj.nextIndex();
-
+			
 		// run JavaScript in each page.
 		if($index == 1) {
 			$('#tab2').attr("data-toggle", "tab");
-			$('#tab3').attr("data-toggle", "tab");
+			$('#tab3').attr("data-toggle", "");
 			$('#tab4').attr("data-toggle", "");
 			$('#tab5').attr("data-toggle", "");
 			$('#tab6').attr("data-toggle", "");
 		}
 		else if($index == 2) {
+			if(!addItem()) 
+			{
+				alert("Please Report Some Damage!");
+				return;
+			}
+
 			$('#tab2').attr("data-toggle", "tab");
 			$('#tab3').attr("data-toggle", "tab");
 			$('#tab4').attr("data-toggle", "");
@@ -72,11 +78,14 @@ var bootstrapWizardCreate = function(element, options) {
 			$('#tab6').attr("data-toggle", "");
 		}
 		else if($index == 3) {
+
 			$('#tab2').attr("data-toggle", "tab");
 			$('#tab3').attr("data-toggle", "tab");
 			$('#tab4').attr("data-toggle", "tab");
 			$('#tab5').attr("data-toggle", "");
 			$('#tab6').attr("data-toggle", "");
+
+			sendData();
 		}
 
 		if($index > obj.navigationLength()) {
