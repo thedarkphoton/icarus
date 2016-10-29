@@ -1,9 +1,9 @@
 var carPicFront = document.getElementById("carPicFront");
+var carPicBack = document.getElementById("carPicBack");
 
 function whatClicked(evt) {
-	console.log(evt.target);
-	console.log(evt.target.id);
     alert(evt.target.id);
 }
 
 carPicFront.addEventListener("click", whatClicked, false);
+carPicBack.addEventListener("click", whatClicked, false);
