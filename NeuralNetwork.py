@@ -1,8 +1,11 @@
 # Import MNIST data
-import input_data
+import InputData as input_data
 import skflow as skflow
 
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
+
+# Change this to a location on your computer
+inputDataWritePath = '/Users/benjaminlize/PycharmProjects/icarus'
 
 import tensorflow as tf
 
@@ -52,8 +55,7 @@ merged_summary_op = tf.merge_all_summaries()
 with tf.Session() as sess:
     sess.run(init)
 
-    # Change this to a location on your computer
-    summary_writer = tf.train.SummaryWriter('/Users/darrenjames/Desktop/', graph_def=sess.graph_def)
+    summary_writer = tf.train.SummaryWriter('%s' % inputDataWritePath, graph_def=sess.graph_def)
 
     cat_processor = skflow.preprocessing.CategoricalProcessor()
 
