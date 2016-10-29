@@ -22,6 +22,7 @@
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="static/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="static/css/detectCar.css" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -162,8 +163,8 @@
                                         <div class="navbar-inner">
                                             <div class="container">
                                                 <ul>
-                                                    <li><a id="tab1" href="#tab1" onclick="test(1);" data-toggle="tab">Tab1</a></li>
-                                                    <li><a id="tab2" href="#tab2" onclick="test(2);" data-toggle="tab">Tab2</a></li>
+                                                    <li><a id="tab1" href="#tabFront" onclick="test(1);" data-toggle="tab">Tab1</a></li>
+                                                    <li><a id="tab2" href="#tabBack" onclick="test(2);" data-toggle="tab">Tab2</a></li>
                                                     <li><a id="tab3" href="#tab3" onclick="test(3);" data-toggle="tab">Tab3</a></li>
                                                     <li><a id="tab4" href="#tabProcessing" onclick="test(4);" data-toggle="tab">Processing</a></li>
                                                     <li><a id="tab5" href="#tabResult" onclick="test(5);" data-toggle="tab">Results</a></li>
@@ -204,7 +205,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab2">
+                                        <div class="tab-pane" id="tabBack">
                                             <div class="box box-solid">
                                                 <div class="box-header">
                                                 </div>
@@ -212,7 +213,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab1">
+                                        <div class="tab-pane" id="tabFront">
+                                          <div class="box box-solid">
+                                                <div class="box-header">
+                                                </div>
+                                                <div class="box-body">
+                                                  <div id="carPicFront">
+                                                      <img id="imgFront" src="static/img/tesla-front.jpg" style="width:100%;"></img>
+                                                      <div id="botFront"></div>
+                                                      <div id="botFrontLeft"></div>
+                                                      <div id="botFrontRight"></div>
+                                                      <div id="midFront"></div>
+                                                      <div id="topFront"></div>
+                                                      <div id="tireFrontLeft"></div>
+                                                      <div id="sideLeft"></div>
+                                                      <div id="tireBackLeft"></div>
+                                                      <div id="topFrontBack"></div>
+                                                  </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <ul class="pager wizard">
                                             <li class="previous first"><a href="#">Start again</a></li>
@@ -331,6 +350,7 @@
     <script src="static/js/prettify.js"></script>
     <!-- step -->
     <script src="static/js/step.js"></script>
+    <script src="static/js/detectCar.js"></script>
     <script>
     //<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     $.widget.bridge('uibutton', $.ui.button);
