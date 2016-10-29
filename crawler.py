@@ -26,11 +26,6 @@ def create_json(regexp, indicators):
 
 regexp = re.compile(r'\w+.capdata.xml')
 test = create_json(regexp, [
-    ["price", "./data/cap_data/new_prices/price/basic_price"],
-    ["price", "./data/cap_data/new_prices/price/basic_price"]
-    ["price", "./data/cap_data/new_prices/price/basic_price"]
-    ["price", "./data/cap_data/new_prices/price/basic_price"]
-    ["price", "./data/cap_data/new_prices/price/basic_price"]
     ["price", "./data/cap_data/new_prices/price/basic_price"]
 ])
 
