@@ -55,7 +55,7 @@ merged_summary_op = tf.merge_all_summaries()
 with tf.Session() as sess:
     sess.run(init)
 
-    summary_writer = tf.train.SummaryWriter('%s' % inputDataWritePath, graph_def=sess.graph_def)
+    summary_writer = tf.train.SummaryWriter('./', graph_def=sess.graph_def)
 
     cat_processor = skflow.preprocessing.CategoricalProcessor()
 
