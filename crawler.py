@@ -5,39 +5,46 @@ import re
 
 #inputs
 data_folder = "data/"
-cars = [
-    ["price", "./data/cap_data/new_prices/price/basic_price"]
-]
+prefix = "{http://schemas.datacontract.org/2004/07/AudaAPI.Models}"
 claims = [
-    ["claim_no", "./{http://schemas.datacontract.org/2004/07/AudaAPI.Models}AssessmentNumber"]
+    ["parts", "./"+prefix+"DamageEstimate/"+prefix+"Calculation/"+prefix+"Calculation/"+prefix+"InvalidParts/"+prefix+"InvalidPart/"+prefix+"GuideNumber"],
+    ["scrapped", "./"+prefix+"Authorisation/"+prefix+"AuthorisationStatus"]
+
 ]
 
 # don't modify
-def create_json(car_indicators, claim_indicators):
+def create_json(claim_indicators):
     f = []
-    regexp = re.compile(r'\w+.capdata.xml')
+    regexp = re.compile(r'\w+.assessment.xml')
     for (dirpath, dirnames, filenames) in walk(data_folder):
         for file in filenames:
             if regexp.search(file):
                 f += [file[:file.index(".")]]
         break
 
+    parts = []
     cars = []
+
     for path in f:
         car_json = {}
 
-        data = ElementTree.parse(data_folder + path + ".capdata.xml").getroot()
-        for car in car_indicators:
-            car_json[car[0]] = data.find(car[1]).text
-
         data = ElementTree.parse(data_folder + path + ".assessment.xml").getroot()
-        for claim in claim_indicators:
-            car_json[claim[0]] = data.find(claim[1]).text
+        car_json[claims[1][0]] = data.find(claims[1][1]).text
 
-        cars += [car_json]
+        for part in data.findall(claims[0][1]):
+            parts += [part.text]
+            if part.text not in parts:
+                parts.append(part.text)
 
-    return cars
 
-test = create_json(cars, claims)
+        car_json[claims[0][0]] = parts
 
-print(test)
+        if car_json["scrapped"] != None and car_json["parts"] != None and (car_json["scrapped"] == "TotalLoss" or car_json["scrapped"] == "Authorised"):
+            cars += [car_json]
+
+    return { "parts": parts, "cars": cars }
+
+json_data = create_json(claims)
+
+print(json_data["parts"])
+print(json_data["cars"])
