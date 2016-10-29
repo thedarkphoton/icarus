@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="static/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="static/css/style.css" type="text/css">
     <link rel="stylesheet" href="static/css/detectCar.css" type="text/css">
+    <link rel="stylesheet" href="static/css/rating.css" type="text/css">
+    <link rel="stylesheet" href="static/css/datatables.min.css" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -163,12 +165,12 @@
                                         <div class="navbar-inner">
                                             <div class="container">
                                                 <ul>
-                                                    <li><a id="tab1" href="#tabFront" onclick="test(1);" data-toggle="tab">Tab1</a></li>
-                                                    <li><a id="tab2" href="#tabBack" onclick="test(2);" data-toggle="tab">Tab2</a></li>
-                                                    <li><a id="tab3" href="#tab3" onclick="test(3);" data-toggle="tab">Tab3</a></li>
+                                                    <li><a id="tab1" href="#tabFront" onclick="test(1);" data-toggle="tab">Front Car</a></li>
+                                                    <li><a id="tab2" href="#tabBack" onclick="test(2);" data-toggle="tab">Rear Car</a></li>
+                                                    <li><a id="tab3" href="#tabSummarise" onclick="test(3);" data-toggle="tab">Summarise</a></li>
                                                     <li><a id="tab4" href="#tabProcessing" onclick="test(4);" data-toggle="tab">Processing</a></li>
                                                     <li><a id="tab5" href="#tabResult" onclick="test(5);" data-toggle="tab">Results</a></li>
-                                                    <li><a id="tab6" href="#tabSummarize" onclick="test(6);" data-toggle="tab">Summarize</a></li>
+                                                    <!-- <li><a id="tab6" href="#tabSummarize" onclick="test(6);" data-toggle="tab">Summarize</a></li> -->
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,8 +179,8 @@
                                         <div class="bar progress-bar progress-bar-striped ">Your progress</div>
                                     </div>
                                     <div class="tab-content">
-                                        <div class="tab-pane" id="tabSummarize">
-                                        </div>
+                                        <!-- <div class="tab-pane" id="tabSummarize">
+                                        </div> -->
                                         <div class="tab-pane" id="tabResult">
                                         </div>
                                         <div class="tab-pane" id="tabProcessing">
@@ -191,17 +193,22 @@
                                                 <p>We have done processing. Please click next to get your results.</p>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tab3">
+                                        <div class="tab-pane" id="tabSummarise">
                                             <div class="box box-solid">
                                                 <div class="box-header">
-                                                    <h3 class="box-title">Please Answer All Questions</h3>
-                                                    <div class="btn-group pull-right">
-                                                        <a class="btn btn-default btn-sm" onclick="change(this)" data-toggle="collapse" data-target="#this-insert-body-1">
-                                                            <i class="fa fa-chevron-up"></i>
-                                                        </a>
-                                                    </div>
+                                                    <h3 class="box-title">Please Check All Details Before Click Next.</h3>
                                                 </div>
                                                 <div class="box-body collapse in" id="this-insert-body-1">
+                                                    <table id="summarise" class="display" cellspacing="0" width="100%">
+                                                      <thead>
+                                                          <tr>
+                                                              <th>Damage Parts</th>
+                                                              <th>Damage Rating</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody id="addItemList">
+                                                      </tbody>
+                                                  </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,6 +262,25 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="setValue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      
+                      <div class="modal-body">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <h4>Rating the damage (from Lowest to Highest) : </h4>
+                          <div class="rating" id="rate"></div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-success" onclick="saveData();">Save</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </section>
             <!-- /.content -->
@@ -312,18 +338,6 @@
             </div>
         </aside>
         <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <!-- The Close Button -->
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-            <!-- Modal Content (The Image) -->
-            <img style="height: 600px" class="modal-content" src="static/img/mandelaquote.jpg">
-            <!-- Modal Caption (Image Text) -->
-            <div>Nelson Mandela</div>
-        </div>
     </div>
     <!-- ./wrapper -->
     <!-- jQuery 2.2.3 -->
@@ -334,15 +348,18 @@
     <script src="static/js/Chart.min.js"></script>
     <!-- FastClick -->
     <script src="static/js/fastclick.min.js"></script>
+
+    <script src="static/js/datatables.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="static/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="static/js/demo.js"></script>
-    <!-- theme files. you only need to include the theme you use.
-       feel free to modify themes and create your own themes -->
-    <script src="static/js/jquery-ui-1.10.3.custom.js"></script>
-    <script src="static/js/require.js"></script>
-    <script src="static/js/lightstreamer.js"></script>
+    
+    <script src="static/js/jquery-ui.js"></script>
+    
+
+    <!-- <script src="static/js/lightstreamer.js"></script> -->
     <script src="static/js/pidder.js"></script>
     <script src="static/js/beautifier.js"></script>
     <script src="static/js/bootstrap-transition.js"></script>
@@ -357,39 +374,16 @@
     <script src="static/js/bootstrap-collapse.js"></script>
     <script src="static/js/bootstrap-carousel.js"></script>
     <script src="static/js/bootstrap-typeahead.js"></script>
+    <script src="static/js/rating.js"></script>
     <script src="static/js/utility.js"></script>
     <!-- prettify -->
     <script src="static/js/prettify.js"></script>
     <!-- step -->
     <script src="static/js/step.js"></script>
     <script src="static/js/detectCar.js"></script>
-    <script>
-    //<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    $.widget.bridge('uibutton', $.ui.button);
+    
+    <!-- datatables.min.js -->
 
-    $(document).ready(function() {
-        $('#rootwizard').bootstrapWizard({
-            onTabShow: function(tab, navigation, index) {
-                var $total = navigation.find('li').length;
-                var $current = index + 1;
-                var $percent = ($current / $total) * 100;
-                $('#rootwizard').find('.bar').css({
-                    width: $percent + '%'
-                });
-            }
-        });
-    });
-
-    function change(el) {
-        var elc = el.children;
-        if (elc[0].className == "fa fa-chevron-down") {
-            elc[0].className = "fa fa-chevron-up";
-
-        } else {
-            elc[0].className = "fa fa-chevron-down";
-        }
-    }
-    </script>
 </body>
 
 </html>
