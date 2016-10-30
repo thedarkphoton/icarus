@@ -31,6 +31,6 @@ def sendData(request):
     data[8] = 0 if request.POST["claim_front_windscreen"] == None else int(request.POST["claim_front_windscreen"]);
     data[9] = 0 if request.POST["claim_back_windscreen"] == None else int(request.POST["claim_back_windscreen"]);
     data[10] = 0 if request.POST["claim_roof"] == None else int(request.POST["claim_roof"]);
-    # data[11] = 0 if request.POST["claim_fire"] == None else int(request.POST["claim_fire"]);
+    data[11] = 0 if request.POST["claim_fire"] == None else int(request.POST["claim_fire"]);
 
     return HttpResponse(Predicter.predict(data))
