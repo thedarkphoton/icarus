@@ -1,21 +1,21 @@
 div#carPicFront div, div#carPicFront span {
     display:block;
     position:absolute;
-    border:1px solid red;
+    /*border:1px solid red;*/
 }
-div#botFront {
+div#front_bumber {
     bottom:10%;
     left:10%;
     height:40%;
     width:25%;
 }
-div#botFrontLeft {
+div#fl_lights {
     bottom:10%;
     left:5%;
     height:40%;
     width:5%;
 }
-div#botFrontRight {
+div#fr_lights {
     bottom:10%;
     left:35%;
     height:40%;
@@ -39,7 +39,7 @@ div#tireFrontLeft {
     height:40%;
     width:15%;
 }
-div#sideLeft {
+div#left_side {
     bottom:23%;
     left:68%;
     height:42%;
@@ -98,7 +98,7 @@ div#tireBackRight {
     height:40%;
     width:15%;
 }
-div#sideRight {
+div#right_side {
     bottom:23%;
     left:63%;
     height:42%;
