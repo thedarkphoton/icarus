@@ -8,17 +8,17 @@ def predict(data):
 
     #data = json.loads(request.POST.get('data'))
 
-    formattedArray = []
+    # formattedArray = []
 
-    for idx, val in enumerate(titles):
-        name = titles.get(idx)
-        data = data.get(name)
-        formattedArray.append(data, '')
-        print(data)
+    # for idx, val in enumerate(titles):
+    #     name = titles.get(idx)
+    #     data = data.get(name)
+    #     formattedArray.append(data, '')
+    #     print(data)
 
-    clf = joblib.load('treeClassifier_model.pkl')
-    prediction = clf.predict([formattedArray])
-    print prediction
-    return prediction
+    # clf = joblib.load('treeClassifier_model.pkl')
+    # prediction = clf.predict([formattedArray])
+    # print prediction
+    # return prediction
 
-predict()
+    return "Done something"

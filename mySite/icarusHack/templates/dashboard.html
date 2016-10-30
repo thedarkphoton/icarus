@@ -182,6 +182,10 @@
                                         <!-- <div class="tab-pane" id="tabSummarize">
                                         </div> -->
                                         <div class="tab-pane" id="tabResult">
+                                            <div class="callout callout-info" id="">
+                                                <h4>Our smart Machine Learning suggests : </h4>
+                                                <p id="outputFromServer"></p>
+                                            </div>
                                         </div>
                                         <div class="tab-pane" id="tabProcessing">
                                             <div class="callout callout-info" id="show-waiting">
@@ -390,6 +394,10 @@
             console.log("Data is Send to Server");
             $.post( "sendData/", {'data' : info, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function( data ) {
                 console.log(data);
+
+                $("#show-waiting").addClass("hidden");
+                $("#show-success").removeClass("hidden");
+                $("#outputFromServer").html(data);
             });
         }
     </script>
