@@ -147,7 +147,8 @@
             <!-- /.sidebar -->
         </aside>
 
-        <form action="/" accept-charset="UTF-8" method="post">
+        <form action="/sendData/" accept-charset="UTF-8" method="post">
+            {% csrf_token %}
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
