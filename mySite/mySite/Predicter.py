@@ -6,8 +6,10 @@ titles = ['front_bumber','rear_bumper','left_side','right_side','fl_lights','fr_
 
 def predict(data):
 
-    #data = json.loads(request.POST.get('data'))
+    clf = joblib.load('treeClassifier_model.pkl')
+    predication = clf.predict(data)
 
+<<<<<<< HEAD
     formattedArray = []
 
     for name in titles:
@@ -24,3 +26,7 @@ def predict(data):
     return prediction
 
     # return "Done something"
+=======
+    print predication
+    return predication
+>>>>>>> 37580a3472014129189f1294ee9d45781f5c474f
