@@ -1,13 +1,9 @@
 # Import MNIST data
 import InputData as input_data
 import skflow as skflow
+import tensorflow as tf
 
 mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
-
-# Change this to a location on your computer
-inputDataWritePath = '/Users/benjaminlize/PycharmProjects/icarus'
-
-import tensorflow as tf
 
 # Set parameters
 learning_rate = 0.01
