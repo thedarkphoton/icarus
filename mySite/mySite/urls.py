@@ -25,5 +25,6 @@ urlpatterns = [
     url('^dashboard.html', TemplateView.as_view(template_name='dashboard.html')),
     url('^login.html', TemplateView.as_view(template_name='login.html')),
     url('^main.html', TemplateView.as_view(template_name='index.html')),
+    # url(r'^sendData/$', 'icarusHack.views.sendData'),
     # url(r'^word/', include('word.urls')),
 ]
