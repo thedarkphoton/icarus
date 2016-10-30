@@ -36,7 +36,3 @@ $(document).ready(function() {
     	]
     });
 });
-
-function SendData() {
-	console.log("Data is Send to Server");
-}

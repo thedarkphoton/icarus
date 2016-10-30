@@ -419,7 +419,16 @@
     <script src="static/js/detectCar.js"></script>
     
     <!-- datatables.min.js -->
+    <script>
 
+        var info = {};
+        function sendData() {
+            console.log("Data is Send to Server");
+            $.post( "sendData/", {'data' : info, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function( data ) {
+                console.log(data);
+            });
+        }
+    </script>
 </body>
 
 </html>
