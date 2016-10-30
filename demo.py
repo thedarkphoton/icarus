@@ -9,54 +9,80 @@ treeClassifier = tree.DecisionTreeClassifier()
 linearSVC = LinearSVC()
 svc = svm.SVC()
 
-# front bumber, right side, rear bumper, left side, rear lights, rear windshield, front windshield, wheels, roof , fire
-titles = ['bumber','right side','rear bumper','left side','rear lights','rear windshield','front windshield','wheels','roof','fire']
+titles = ['front_bumber','rear_bumper','left_side','right_side','fl_lights','fr_lights','rl_lights','rr_lights','front_windshield','rear_windshield','roof','fire']
 
 #Spaced every 10 for counting purposes
+#Damage: 0 = no , 1 = medium, 2 = high
 X = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [1, 1, 1, 0, 0, 0, 0, 0, 1, 0],
-    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-    [1, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [2, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2],
+    [2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0],
 
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 0, 1, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
+    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
 
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 1, 0, 1, 0, 1],
-    [0, 0, 0, 0, 1, 0, 0, 1, 0, 1],
-    [0, 0, 0, 0, 1, 0, 0, 1, 0, 1],
-    [0, 1, 1, 0, 1, 0, 0, 1, 0, 0],
-    [0, 1, 1, 0, 1, 1, 0, 1, 0, 0],
-    [0, 1, 1, 0, 1, 0, 1, 1, 0, 0],
-    [0, 1, 1, 0, 1, 0, 1, 1, 0, 0],
-    [1, 1, 1, 0, 1, 0, 1, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [2, 0, 1, 2, 0, 0, 0, 0, 0, 0, 1, 0],
 
-    ]
+    [1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+    [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [1, 2, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0],
+    [1, 0, 0, 0, 2, 2, 0, 0, 1, 1, 0, 0],
+
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+    [2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0],
+
+]
 
 #Spaced every 5 for counting purposes~
 Y = [
     'write-off', 'write-off', 'write-off', 'write-off', 'write-off',
-    'write-off','write-off', 'write-off','not-write-off','not-write-off',
-    'not-write-off','not-write-off','not-write-off','not-write-off','not-write-off',
-    'not-write-off','not-write-off','not-write-off','not-write-off','not-write-off',
     'write-off', 'write-off', 'write-off', 'write-off', 'write-off',
     'write-off', 'write-off', 'write-off', 'write-off', 'write-off',
+    'write-off', 'write-off', 'write-off', 'write-off', 'write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
+    'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off', 'not-write-off',
 ]
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -89,6 +115,6 @@ print(classification_report(y_test, y_pred, target_names=['not-write-off','write
 
 
 # API has only 1 get method which uses the LinearSVC classifier variable to call linearSVC.predict(input from website)
-print linearSVC.predict([[0,0,0,0,0,0,0,0,0,1]])
+print linearSVC.predict([[0,0,0,0,0,0,0,0,0,1,0,0]])
 
 
