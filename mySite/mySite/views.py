@@ -4,9 +4,14 @@ from django.template import RequestContext
 import ast
 
 # Create your views here.
+from mySite.mySite import Predicter
+
+
 def sendData(request):
     if request.method == 'POST':
-        print request.body
+        myDict = dict(request.POST.iterlists())
+        Predicter.predict(myDict)
+        print myDict
         # myData = ast.literal_eval(request.body)
         # print myData
         # print myData["info"]

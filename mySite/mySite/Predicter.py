@@ -4,9 +4,9 @@ import json
 
 titles = ['front_bumber','rear_bumper','left_side','right_side','fl_lights','fr_lights','rl_lights','rr_lights','front_windshield','rear_windshield','roof','fire']
 
-def predict():
+def predict(data):
 
-    data = json.loads(request.POST.get('data'))
+    #data = json.loads(request.POST.get('data'))
 
     formattedArray = []
 
