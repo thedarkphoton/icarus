@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
+from views import sendData
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,6 +26,7 @@ urlpatterns = [
     url('^dashboard.html', TemplateView.as_view(template_name='dashboard.html')),
     url('^login.html', TemplateView.as_view(template_name='login.html')),
     url('^main.html', TemplateView.as_view(template_name='index.html')),
-    # url(r'^sendData/$', 'icarusHack.views.sendData'),
+    url('^test.html', TemplateView.as_view(template_name='test.html')),
+    url(r'^sendData/', sendData),
     # url(r'^word/', include('word.urls')),
 ]

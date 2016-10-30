@@ -383,7 +383,14 @@
     <script src="static/js/detectCar.js"></script>
     
     <!-- datatables.min.js -->
-
+    <script>
+        function sendData() {
+            console.log("Data is Send to Server");
+            $.post( "sendData/", {info : info, csrfmiddlewaretoken: '{{ csrf_token }}'}, function( data ) {
+                console.log(data);
+            });
+        }
+    </script>
 </body>
 
 </html>
