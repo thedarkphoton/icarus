@@ -25,6 +25,8 @@ def create_json(claim_indicators):
     parts = []
     cars = []
 
+
+
     for path in f:
         car_json = {}
 
@@ -36,12 +38,19 @@ def create_json(claim_indicators):
             if part.text not in parts:
                 parts.append(part.text)
 
-
         car_json[claims[0][0]] = parts
 
         if car_json["scrapped"] != None and car_json["parts"] != None and (car_json["scrapped"] == "TotalLoss" or car_json["scrapped"] == "Authorised"):
             cars += [car_json]
 
+    #I'm solving the chalenge for unipol
+    #pain realing, joy creating
+    #my client is insurance companies
+    #what is the competition
+    #how are you planning to make money
+    #talk about the team
+
+    print len(parts)
     return { "parts": parts, "cars": cars }
 
 json_data = create_json(claims)
