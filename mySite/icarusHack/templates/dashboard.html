@@ -384,9 +384,11 @@
     
     <!-- datatables.min.js -->
     <script>
+
+        var info = {};
         function sendData() {
             console.log("Data is Send to Server");
-            $.post( "sendData/", {info : info, csrfmiddlewaretoken: '{{ csrf_token }}'}, function( data ) {
+            $.post( "sendData/", {'data' : info, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function( data ) {
                 console.log(data);
             });
         }

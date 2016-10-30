@@ -1,6 +1,4 @@
 
-
-var info = {};
 var selectId;
 
 var carPicFront = document.getElementById("carPicFront");

@@ -5,7 +5,9 @@
     <!-- jQuery -->
     <script src="static/vendor/jquery/jquery.min.js"></script>
     <script>
-    	$.post( "sendData/", {test : "test", csrfmiddlewaretoken: '{{ csrf_token }}'}, function( data ) {
+    	var test = {'aaa' : 10, 'bbb' : 20};
+    	test['csrfmiddlewaretoken'] = '{{ csrf_token }}';
+    	$.post( "sendData/", test, function( data ) {
 		  console.log(data);
 		});
     </script>
