@@ -9,7 +9,7 @@ a:visited {color:#84c4e2;}
 a:hover {color: #cd82ad;}
 a:active {color: #84c4e2;}
 
-.center-content.temp {
+.col-centered {
     float: none;
     margin: 0 auto;
 }
