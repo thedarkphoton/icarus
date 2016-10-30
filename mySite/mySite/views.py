@@ -4,8 +4,7 @@ from django.template import RequestContext
 import json
 
 # Create your views here.
-from mySite.mySite import Predicter
-
+from mySite import Predicter
 
 def sendData(request):
     if request.method == 'POST':
@@ -15,4 +14,5 @@ def sendData(request):
         # myData = ast.literal_eval(request.body)
         # print myData
         # print myData["info"]
+
     return HttpResponse("Got it!")
