@@ -4,15 +4,13 @@ from django.template import RequestContext
 import json
 
 # Create your views here.
-import Predicter
+import predicter
 
 def sendData(request):
     if request.method == 'POST':
-        myDict = json.loads(request.POST.iterlists())
-        #Predicter.predict(myDict)
-        #print myDict
-        # myData = ast.literal_eval(request.body)
-        # print myData
-        # print myData["info"]
-        print 'YES'
+        myDict = dict(request.POST.iterlists())
+        print myDict
+        predicter.predict(myDict)
+        print myDict
+        print 'YESSSSSS'
     return HttpResponse("Got it!")
