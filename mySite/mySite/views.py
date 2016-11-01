@@ -8,18 +8,7 @@ import Predicter
 
 #titles = ['front_bumber','rear_bumper','left_side','right_side','fl_lights','fr_lights','rl_lights','rr_lights','front_windshield','rear_windshield','roof','fire']
 
-
 def sendData(request):
-<<<<<<< HEAD
-    if request.method == 'POST':
-        myDict = dict(request.POST.iterlists())
-        output = Predicter.predict(myDict)
-        return HttpResponse(output)
-        # myData = ast.literal_eval(request.body)
-        # print myData
-        # print myData["info"]
-    return HttpResponse("Error")
-=======
 
     # if request.method == 'POST':
     #     myDict = dict(request.POST.iterlists())
@@ -45,4 +34,3 @@ def sendData(request):
     data[11] = 0 if request.POST["claim_fire"] == None else int(request.POST["claim_fire"]);
 
     return HttpResponse(Predicter.predict(data))
->>>>>>> 37580a3472014129189f1294ee9d45781f5c474f

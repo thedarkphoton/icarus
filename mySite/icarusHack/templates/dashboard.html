@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Icarus</title>
-<<<<<<< HEAD
-    <title>Icarus | Smart Fast Insurance Claim</title>
-=======
     <title>Icarus | Bringing peace to your online Coversations</title>
->>>>>>> 37580a3472014129189f1294ee9d45781f5c474f
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -43,7 +39,7 @@
             <!-- Logo -->
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>I</span>
+                <span class="logo-mini"><b>P</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Icarus</span>
             </a>
@@ -150,114 +146,80 @@
             </section>
             <!-- /.sidebar -->
         </aside>
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <!-- <h1>
-        Blue Sports Cars
-      </h1> -->
-            </section>
-            <!-- Main content -->
-            <section class="content connectedSortable ui-sortable">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="box box-solid">
-                            <div class="box-body">
-                                <div id="rootwizard">
-                                    <div class="navbar">
-                                        <div class="navbar-inner">
-                                            <div class="container">
-                                                <ul>
-                                                    <li><a id="tab1" href="#tabFront" onclick="test(1);" data-toggle="tab">Front Car</a></li>
-                                                    <li><a id="tab2" href="#tabBack" onclick="test(2);" data-toggle="tab">Rear Car</a></li>
-                                                    <li><a id="tab3" href="#tabSummarise" onclick="test(3);" data-toggle="tab">Summarise</a></li>
-                                                    <li><a id="tab4" href="#tabProcessing" onclick="test(4);" data-toggle="tab">Processing</a></li>
-                                                    <li><a id="tab5" href="#tabResult" onclick="test(5);" data-toggle="tab">Results</a></li>
-                                                    <!-- <li><a id="tab6" href="#tabSummarize" onclick="test(6);" data-toggle="tab">Summarize</a></li> -->
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="bar" class="progress progress-striped active">
-                                        <div class="bar progress-bar progress-bar-striped ">Your progress</div>
-                                    </div>
-                                    <div class="tab-content">
-                                        <!-- <div class="tab-pane" id="tabSummarize">
-                                        </div> -->
-                                        <div class="tab-pane" id="tabResult">
-                                            <div class="callout callout-info" id="">
-                                                <h4>Our smart Machine Learning suggests : </h4>
-                                                <p id="outputFromServer"></p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="tabProcessing">
-                                            <div class="callout callout-info" id="show-waiting">
-                                                <h4><i align="center" class="fa fa-spinner fa-pulse"></i> All Cherts are processing</h4>
-                                                <p>Please wait our system to processing cherts before continues.</p>
-                                            </div>
-                                            <div class="callout callout-success hidden" id="show-success">
-                                                <h4> Plese click continues to see your results</h4>
-                                                <p>We have done processing. Please click next to get your results.</p>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="tabSummarise">
-                                            <div class="box box-solid">
-                                                <div class="box-header">
-                                                    <h3 class="box-title">Please Check All Details Before Click Next.</h3>
-                                                </div>
-                                                <div class="box-body collapse in" id="this-insert-body-1">
-                                                    <table id="summarise" class="display" cellspacing="0" width="100%">
-                                                      <thead>
-                                                          <tr>
-                                                              <th>Damage Parts</th>
-                                                              <th>Damage Rating</th>
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody id="addItemList">
-                                                      </tbody>
-                                                  </table>
+
+        <form action="/sendData/" accept-charset="UTF-8" method="post">
+            {% csrf_token %}
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <!-- <h1>
+            Blue Sports Cars
+          </h1> -->
+                </section>
+                <!-- Main content -->
+                <section class="content connectedSortable ui-sortable">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="box box-solid">
+                                <div class="box-body">
+                                    <div id="rootwizard">
+                                        <div class="navbar">
+                                            <div class="navbar-inner">
+                                                <div class="container">
+                                                    <ul>
+                                                        <li><a id="tab1" class="update-damage-buttons" href="#tabFront" onclick="test(1);" data-toggle="tab">Front Car</a></li>
+                                                        <li><a id="tab2" class="update-damage-buttons" href="#tabBack" onclick="test(2);" data-toggle="tab">Rear Car</a></li>
+                                                        <li><a id="tab3" href="#tabSummarise" onclick="test(3);" data-toggle="tab">Summarise</a></li>
+                                                        <li><a id="tab4" href="#tabProcessing" onclick="test(4);" data-toggle="tab">Processing</a></li>
+                                                        <li><a id="tab5" href="#tabResult" onclick="test(5);" data-toggle="tab">Results</a></li>
+                                                        <!-- <li><a id="tab6" href="#tabSummarize" onclick="test(6);" data-toggle="tab">Summarize</a></li> -->
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="tabBack">
-                                            <div class="box box-solid">
-                                                <div class="box-header">
+                                        <div id="bar" class="progress progress-striped active">
+                                            <div class="bar progress-bar progress-bar-striped ">Your progress</div>
+                                        </div>
+                                        <div class="tab-content">
+                                            <!-- <div class="tab-pane" id="tabSummarize">
+                                            </div> -->
+                                            <div class="tab-pane" id="tabResult">
+                                            </div>
+                                            <div class="tab-pane" id="tabProcessing">
+                                                <div class="callout callout-info" id="show-waiting">
+                                                    <h4><i align="center" class="fa fa-spinner fa-pulse"></i> All Cherts are processing</h4>
+                                                    <p>Please wait our system to processing cherts before continues.</p>
                                                 </div>
-<<<<<<< HEAD
-                                                <div class="box-body">
-                                                    <div id="carPicBack">
-                                                        <img id="imgBack" src="static/img/tesla-back.jpg" style="width:100%;"></img>
-                                                        <div id="rear_bumper"></div>
-                                                        <div id="botBackLeft"></div>
-                                                        <div id="botBackRight"></div>
-                                                        <div id="midBack"></div>
-                                                        <div id="topBack"></div>
-                                                        <div id="tireBackRight"></div>
-                                                        <div id="right_side"></div>
-                                                        <div id="tireFrontRight"></div>
-                                                        <div id="topBackFront"></div>
+                                                <div class="callout callout-success hidden" id="show-success">
+                                                    <h4> Plese click continues to see your results</h4>
+                                                    <p>We have done processing. Please click next to get your results.</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tabSummarise">
+                                                <div class="box box-solid">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title">Please Check All Details Before Click Next.</h3>
+                                                    </div>
+                                                    <div class="box-body collapse in" id="this-insert-body-1">
+                                                        <table id="summarise" class="display" cellspacing="0" width="100%">
+                                                          <thead>
+                                                              <tr>
+                                                                  <th>Damage Parts</th>
+                                                                  <th>Damage Rating</th>
+                                                              </tr>
+                                                          </thead>
+                                                          <tbody id="addItemList">
+                                                          </tbody>
+                                                      </table>
+
+
+
+                                                        <button type="submit" class="btn btn-primary">
+                                                            Commit Claim
+                                                        </button>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="tabFront">
-                                            <div class="box box-solid">
-                                                <div class="box-header">
-                                                </div>
-                                                <div class="box-body">
-                                                    <div id="carPicFront">
-                                                        <img id="imgFront" src="static/img/tesla-front.jpg" style="width:100%;"></img>
-                                                        <div id="front_bumber"></div>
-                                                        <div id="fl_lights"></div>
-                                                        <div id="fr_lights"></div>
-                                                        <div id="midFront"></div>
-                                                        <div id="topFront"></div>
-                                                        <div id="tireFrontLeft"></div>
-                                                        <div id="left_side"></div>
-                                                        <div id="tireBackLeft"></div>
-                                                        <div id="topFrontBack"></div>
-=======
                                             </div>
 
 
@@ -337,44 +299,45 @@
                                                                 </div>
                                                             </div>
                                                         </div>
->>>>>>> 37580a3472014129189f1294ee9d45781f5c474f
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <ul class="pager wizard">
+                                                <li class="previous update-damage-buttons"><a href="#">Start again</a></li>
+                                                <li class="previous update-damage-buttons"><a href="#">Previous</a></li>
+                                                <li class="next update-damage-buttons"><a href="#">Next</a></li>
+                                            </ul>
                                         </div>
-                                        <ul class="pager wizard">
-                                            <li class="previous first"><a href="#">Start again</a></li>
-                                            <li class="previous"><a href="#">Previous</a></li>
-                                            <li class="next"><a href="#">Next</a></li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="setValue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      
-                      <div class="modal-body">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <h4>Rating the damage (from Lowest to Highest) : </h4>
-                          <div class="rating" id="rate"></div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-success" onclick="saveData();">Save</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="setValue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                          <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                              <h4>Rating the damage (from Lowest to Highest) : </h4>
+                              <div class="rating" id="rate"></div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-success" onclick="saveData();">Save</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-            </section>
-            <!-- /.content -->
-        </div>
+                </section>
+                <!-- /.content -->
+            </div>
+        </form>
+
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Create the tabs -->
@@ -480,10 +443,6 @@
             console.log("Data is Send to Server");
             $.post( "sendData/", {'data' : info, 'csrfmiddlewaretoken': '{{ csrf_token }}'}, function( data ) {
                 console.log(data);
-
-                $("#show-waiting").addClass("hidden");
-                $("#show-success").removeClass("hidden");
-                $("#outputFromServer").html(data);
             });
         }
     </script>
